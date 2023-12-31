@@ -34,19 +34,19 @@ namespace _2._2_TemplateMethod_Grouping
             return students;
         }
 
-        // [10 14 15 17 18 20 21] is timeSlots:string
+        // 10 14 15 17 18 20 21 is timeSlots:string
         private static List<TimeSlot> ParseTimeSlots(string timeSlots)
         {
-            // timeSlots = timeSlots.Trim('[', ']');
             var parts = timeSlots.Split(' ');
             var result = new List<TimeSlot>();
             foreach (var part in parts)
             {
                 if (int.TryParse(part, out int timeSlot))
-                {
-                    // result.Add(timeSlot);
+                {                    
                     // Convert to TimeSlot is DateTime startTime And DateTime EndTime
-                    result.Add(new TimeSlot(new TimeSpan(timeSlot, 0, 0), new TimeSpan(timeSlot + 1, 0, 0)));
+                    result.Add(new TimeSlot(
+                        new TimeSpan(timeSlot, 0, 0), 
+                        new TimeSpan(timeSlot + 1, 0, 0)));
                 }
             }
             return result;
